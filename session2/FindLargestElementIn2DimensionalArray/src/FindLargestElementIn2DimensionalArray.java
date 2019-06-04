@@ -3,12 +3,10 @@ import java.util.Scanner;
 public class FindLargestElementIn2DimensionalArray {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
         System.out.println("Enter number of row");
         int rowOfArray = input.nextInt();
         System.out.println("Enter number of column");
         int colOfArray = input.nextInt();
-
         int[][] myArray = new int[rowOfArray][colOfArray];
         //enter value into array
         for (int r = 0; r < myArray.length; r++) {
