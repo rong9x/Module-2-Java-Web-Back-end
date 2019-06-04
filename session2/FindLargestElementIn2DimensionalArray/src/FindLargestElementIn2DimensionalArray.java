@@ -28,7 +28,6 @@ public class FindLargestElementIn2DimensionalArray {
         //find max value
         int maxValue = myArray[0][0];
         int rowOfMax = 0, colOfMax = 0;
-
         for (int row = 0; row < myArray.length; row++) {
             for (int column = 0; column < myArray[row].length; column++) {
                 if (maxValue < myArray[row][column]) {
