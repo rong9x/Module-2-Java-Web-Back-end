@@ -17,7 +17,7 @@ class CheckTriAngle extends Exception {
 
             if (angle1 < 0 || angle2 < 0 || angle3 < 0 || angle1 + angle2 < angle3 ||
                     angle1 + angle3 < angle2 || angle2 + angle3 < angle1) {
-                CheckTriAngle err = new CheckTriAngle("The angle must larger than 0");
+                CheckTriAngle err = new CheckTriAngle("Invalid angle");
                 throw err;
             } else {
                 System.out.println("Ok");
