@@ -43,7 +43,6 @@ public class Fan {
         this.on = false;
     }
 
-    @Override
     public String toString() {
         String message;
         if (on) {
