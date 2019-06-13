@@ -3,68 +3,79 @@ public class TennisGame {
     public static final int LOVE = 0;
     public static final int FIFTEEN = 1;
     public static final int THIRTY = 2;
-    public static final int FOURTY = 3;
+    public static final int FORTY = 3;
+    public static final int DEUCE = 4;
+    static String message = "";
 
-    public static String getScore(String player1Name, String player2Name, int player1Score, int player2Score) {
-        String score = "";
+    public static String getScore(int player1Score, int player2Score) {
         int tempScore = 0;
         if (player1Score == player2Score) {
-            switch (player1Score) {
-                case LOVE:
-                    score = "Love-All";
-                    break;
-                case FIFTEEN:
-                    score = "Fifteen-All";
-                    break;
-                case THIRTY:
-                    score = "Thirty-All";
-                    break;
-                case FOURTY:
-                    score = "Forty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-
-            }
-        } else if (player1Score >= 4 || player2Score >= 4) {
-            findTheWiner(player1Score, player2Score);
+            draw(player1Score);
+        } else if (player1Score >= DEUCE || player2Score >= DEUCE) {
+            getWinner(player1Score, player2Score);
         } else {
             for (int i = 1; i < 3; i++) {
                 if (i == 1) tempScore = player1Score;
                 else {
-                    score += "-";
+                    message += "-";
                     tempScore = player2Score;
                 }
-                switch (tempScore) {
-                    case LOVE:
-                        score += "Love";
-                        break;
-                    case FIFTEEN:
-                        score += "Fifteen";
-                        break;
-                    case THIRTY:
-                        score += "Thirty";
-                        break;
-                    case FOURTY:
-                        score += "Forty";
-                        break;
-                }
+                playerScore(tempScore);
             }
         }
-        return score;
+        return message;
     }
 
-    public static String findTheWiner(int player1Score, int player2Score) {
-        String score = "";
+    public static String playerScore(int tempScore) {
+        switch (tempScore) {
+            case LOVE:
+                message += "Love";
+                break;
+            case FIFTEEN:
+                message += "Fifteen";
+                break;
+            case THIRTY:
+                message += "Thirty";
+                break;
+            case FORTY:
+                message += "Forty";
+                break;
+        }
+        return message;
+    }
+
+    //handle draw points
+    public static String draw(int playerScore) {
+        switch (playerScore) {
+            case LOVE:
+                message = "Love-All";
+                break;
+            case FIFTEEN:
+                message = "Fifteen-All";
+                break;
+            case THIRTY:
+                message = "Thirty-All";
+                break;
+            case FORTY:
+                message = "Forty-All";
+                break;
+            default:
+                message = "Deuce";
+                break;
+        }
+        return message;
+    }
+
+    //find out the winner
+    public static String getWinner(int player1Score, int player2Score) {
         int minusResult = player1Score - player2Score;
         if (minusResult == 1) {
-            score = "Advantage player1";
+            message = "Advantage player1";
         } else if (minusResult == -1) {
-            score = "Advantage player2";
+            message = "Advantage player2";
         } else if (minusResult >= 2) {
-            score = "Win for player1";
-        } else score = "Win for player2";
-        return score;
+            message = "Win for player1";
+        } else message = "Win for player2";
+        return message;
     }
 }
