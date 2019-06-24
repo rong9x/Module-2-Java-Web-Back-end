@@ -47,15 +47,34 @@
             </tr>
             <tr>
                 <td>Type </td>
-                <td><input type="text" name="idType" id="idType"></td>
+                <td>
+                    <select name="idType" id="idType">
+                        <option value="4">male</option>
+                        <option value="5">female</option>
+                        <option value="6">kid</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Species </td>
-                <td><input type="text" name="idSpecies" id="idSpecies"></td>
+                <td>
+                    <select name="idSpecies" id="idSpecies">
+                        <option value="5">shirt</option>
+                        <option value="6">dress</option>
+                        <option value="7">suit</option>
+                        <option value="8">pants</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Producer </td>
-                <td><input type="text" name="idProducer" id="idProducer"></td>
+                <td>
+                    <select name="idProducer" id="idProducer">
+                        <option value="4">H&M</option>
+                        <option value="5">Blue Exchange</option>
+                        <option value="6">Gucci</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td></td>

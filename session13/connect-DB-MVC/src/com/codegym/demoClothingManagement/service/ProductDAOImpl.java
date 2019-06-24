@@ -38,7 +38,33 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public Product getProductById(int idProduct) {
-        return null;
+        Product product = null;
+        sql = "select * from product where id_product = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, idProduct);
+
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                String productName = resultSet.getString("product_name");
+                String description = resultSet.getString("description");
+                int amount = resultSet.getInt("amount");
+                String sellPrice = resultSet.getString("sell_price");
+                String cost = resultSet.getString("cost");
+                int idType = resultSet.getInt("id_type");
+                int idSpecies = resultSet.getInt("id_species");
+                int idProducer = resultSet.getInt("id_producer");
+
+                product = new Product(idProduct, productName, description, amount, sellPrice, cost,
+                        idType, idSpecies, idProducer);
+
+                resultSet.close();
+                preparedStatement.close();
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return product;
     }
 
     @Override
@@ -100,7 +126,16 @@ public class ProductDAOImpl implements IProductDAO {
     }
 
     @Override
-    public void deleteProduct(int idProduct) {
+    public void deleteProduct(Product product) {
+        sql = "delete from product where id_product = ?";
 
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, product.getIdProduct());
+            preparedStatement.execute();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
