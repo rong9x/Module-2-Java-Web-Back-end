@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<h2>Customer information</h2>
+<p>
+    <a th:href="@{/}">Back to customer list</a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/customer/view}" th:object="${customer}" method="post" novalidate="novalidate">
+        <div>
+            <div>
+                <label>Name: </label>
+                <label th:text="${customer.getName()}"></label>
+            </div>
+            <div>
+                <label>Email: </label>
+                <label th:text="${customer.getEmail()}"></label>
+            </div>
+            <div>
+                <label>Address: </label>
+                <label th:text="${customer.getAddress()}"></label>
+            </div>
+        </div>
+    </form>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
