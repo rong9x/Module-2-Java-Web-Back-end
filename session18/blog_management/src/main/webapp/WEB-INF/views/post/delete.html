@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete a post</title>
+</head>
+<body>
+<h2>Delete a post</h2>
+<p>
+    <a th:href="@{/posts}">Back to posts list</a>
+</p>
+<form th:action="@{/delete-post}" th:object="${post}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div><label for="">Post name: </label><label th:text="${post.getPostName()}"></label></div>
+    <div><label for="">Post description: </label><label th:text="${post.getPostDescription()}"></label></div>
+    <div><label for="">Post date: </label><label th:text="${post.getPostDate()}"></label></div>
+    <div><label for="">Post by: </label><label th:text="${post.getPostBy()}"></label></div>
+    <div><input type="submit" value="Delete"></div>
+</form>
+</body>
+</html>

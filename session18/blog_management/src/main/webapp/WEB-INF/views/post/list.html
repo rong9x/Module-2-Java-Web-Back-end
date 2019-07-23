@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts list</title>
+</head>
+<body>
+<h2>List of posts</h2>
+<p>
+    <a th:href="@{/create-post}">Create a new post</a>
+</p>
+<th:block th:if="${deleteMessage}">
+    <p th:text="${deleteMessage}"></p>
+</th:block>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Post name</th>
+        <th>Post description</th>
+        <th>Post date</th>
+        <th>Post by</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="post : ${posts}">
+        <tr>
+            <td>
+                <a th:href="@{/view-post/__${post.id}__}">
+                    <p th:text="${post.getPostName()}"></p>
+                </a>
+            </td>
+            <td th:text="${post.getPostDescription()}"></td>
+            <td th:text="${post.getPostDate()}"></td>
+            <td th:text="${post.getPostBy()}"></td>
+            <td><a th:href="@{/edit-post/__${post.id}__}">Edit</a></td>
+            <td><a th:href="@{/delete-post/__${post.id}__}">Delete</a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
