@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart page</title>
+</head>
+<body>
+<h1>Cart page</h1>
+<p>
+    <a href="/products">Continue shopping</a>
+</p>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>Option</th>
+        <th>Product code</th>
+        <th>Product name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    <th:block th:each="item : ${cart}">
+        <tr>
+            <td align="center">
+                <a th:href="@{/remove/__${item.product.id}__}" onclick="return confirm('Are you sure?')">
+                    Remove
+                </a>
+            </td>
+            <td th:text="${item.product.productCode}"></td>
+            <td th:text="${item.product.productName}"></td>
+            <td th:text="${item.product.price}"></td>
+            <td th:text="${item.quantity}"></td>
+            <td th:text="${item.product.price * item.quantity}"></td>
+        </tr>
+    </th:block>
+    <tr>
+        <td colspan="5" align="right">Sum</td>
+        <td th:text="${total}"></td>
+    </tr>
+</table>
+</body>
+</html>
